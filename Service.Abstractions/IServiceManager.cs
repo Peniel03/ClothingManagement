@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Service.Abstractions
 {
-    internal interface IServiceManager
+    public interface IServiceManager
     {
+        IUserService UserService { get; }
+        IClotheService ClotheService { get; }
+        ICategoryService CategoryService { get; }
+        ICollectionService CollectionService { get;} 
+        ICommentService CommentService { get; }
+        ILikeService LikeService { get; } 
     }
 }

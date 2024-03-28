@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Services.DTOs
 {
-    internal class UserService
+    public class CategoryDto
     {
+        public string Name { get; set; } = string.Empty;
     }
 }

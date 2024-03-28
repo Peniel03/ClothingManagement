@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Models;
+using Domain.RepositoryInterfaces;
+using Persistence.DataContext;
 
 namespace Persistence.Repositories
 {
-    internal class UserRepository
+    public class UserRepository : RepositoryBase<User>, IUserRepository
     {
+        public UserRepository(RepositoryContext repositoryContext)
+            :base(repositoryContext)
+        {
+                
+        }
     }
 }

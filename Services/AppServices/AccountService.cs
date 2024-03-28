@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Services.AppServices
 {
-    internal class AccountService
+    public class AccountService
     {
+
     }
 }

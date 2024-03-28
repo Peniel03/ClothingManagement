@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Domain.RepositoryInterfaces
 {
-    internal interface IRepositoryManager
+    public interface IRepositoryManager
     {
+        IUserRepository UserRepository { get; }
+        ICategoryRepository CategoryRepository { get; }
+        IClotheRepository ClothesRepository { get; }
+        ICollectionRepository CollectionRepository { get; }
+        ICommentRepository CommentRepository { get; }
+        ILikeRepository LikeRepository { get; }
+        void Save(); 
     }
 }

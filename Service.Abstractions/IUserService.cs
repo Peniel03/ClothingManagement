@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Models;
 
 namespace Service.Abstractions
 {
-    internal interface IUserService
+    public interface IUserService
     {
+        IEnumerable<User> GetAllUsers(bool trackChanges);
+        Task<bool> CreateUserAsync(UserDto user, string password);
     }
-}
+}  

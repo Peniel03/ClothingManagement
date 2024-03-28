@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Service.Abstractions
 {
-    internal interface IAccountService
+    public interface IAccountService
     {
+
     }
 }

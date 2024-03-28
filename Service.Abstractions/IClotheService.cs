@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Models;
 
 namespace Service.Abstractions
 {
-    internal interface IClotheService
+    public interface IClotheService
     {
-    }
+        IEnumerable<Clothe> GetAllClothes(bool trackChanges);
+    } 
 }

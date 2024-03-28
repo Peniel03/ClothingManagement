@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.RepositoryInterfaces
 {
-    internal interface IUserRepository
+    public interface IUserRepository
     {
+
     }
 }
