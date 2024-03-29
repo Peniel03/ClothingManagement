@@ -1,9 +1,10 @@
-﻿using Domain.RepositoryInterfaces;
+﻿using Domain.Entities.Models;
+using Domain.RepositoryInterfaces;
 using Service.Abstractions;
 
-namespace Services.AppServices
+namespace Shared.AppServices
 {
-    public class ClotheService:IClotheService
+    public class ClotheService : IClotheService
     {
         private readonly IRepositoryManager _repositoryManager;
         private readonly ILoggerManager _loggerManager;
@@ -12,6 +13,21 @@ namespace Services.AppServices
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;
-        }  
+        }
+
+        public IEnumerable<Clothe> GetAllClothes(bool trackChanges)
+        {
+            try
+            {
+                var clothes =
+                _repositoryManager.ClotheRepository.GetAllClothes(trackChanges);
+                return clothes;
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong in the{nameof(GetAllClothes)} service method {ex}");
+                throw;
+            }
+        }
     }
 }

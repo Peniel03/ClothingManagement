@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.AppServices
+namespace Shared.AppServices
 {
     public class AccountService
     {

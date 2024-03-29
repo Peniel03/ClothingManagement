@@ -4,6 +4,6 @@ namespace Domain.RepositoryInterfaces
 {
     public interface ICategoryRepository
     {
-        IEnumerable<Category> GetAllGategories(bool trackChanges);
+        IEnumerable<Category> GetAllCategories(bool trackChanges);
     }
 }

@@ -4,6 +4,6 @@ namespace Domain.RepositoryInterfaces
 {
     public interface ICollectionRepository
     {
-        IEnumerable<Collection> GetAllCollection(bool trackChanges);
+        IEnumerable<Collection> GetAllCollections(bool trackChanges);
     }
 }

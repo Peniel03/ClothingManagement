@@ -13,7 +13,7 @@ namespace Persistence.Repositories
                 
         }
 
-        public IEnumerable<Category> GetAllGategories(bool trackChanges) =>
+        public IEnumerable<Category> GetAllCategories(bool trackChanges) =>
              GetAll(trackChanges)
             .OrderBy(x => x.Name)
             .ToList();

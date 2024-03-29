@@ -1,7 +1,8 @@
-﻿using Domain.RepositoryInterfaces;
+﻿using Domain.Entities.Models;
+using Domain.RepositoryInterfaces;
 using Service.Abstractions;
 
-namespace Services.AppServices
+namespace Shared.AppServices
 {
     public class CommentService: ICommentService
     {
@@ -12,6 +13,21 @@ namespace Services.AppServices
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;
+        }
+
+        public IEnumerable<Comment> GetAllComments(bool trackChanges)
+        {
+            try
+            {
+                var comments =
+                _repositoryManager.CommentRepository.GetAllComments(trackChanges);
+                return comments;
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong in the{nameof(GetAllComments)} service method {ex}");
+                throw; 
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Domain.RepositoryInterfaces
 {
     public interface ICommentRepository
     {
-        IEnumerable<Comment> GetAllComment(bool trackChanges);
+        IEnumerable<Comment> GetAllComments(bool trackChanges);
     }
 }
 

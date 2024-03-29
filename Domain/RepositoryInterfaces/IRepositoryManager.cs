@@ -8,9 +8,8 @@ namespace Domain.RepositoryInterfaces
 {
     public interface IRepositoryManager
     {
-        IUserRepository UserRepository { get; }
         ICategoryRepository CategoryRepository { get; }
-        IClotheRepository ClothesRepository { get; }
+        IClotheRepository ClotheRepository { get; }
         ICollectionRepository CollectionRepository { get; }
         ICommentRepository CommentRepository { get; }
         ILikeRepository LikeRepository { get; }

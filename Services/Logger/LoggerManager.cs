@@ -1,7 +1,7 @@
 ﻿using NLog;
 using Service.Abstractions;
 
-namespace Services.Logger
+namespace Shared.Logger
 {
     public class LoggerManager : ILoggerManager
     {

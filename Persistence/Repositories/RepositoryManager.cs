@@ -6,7 +6,6 @@ namespace Persistence.Repositories
     public sealed class RepositoryManager : IRepositoryManager
     {
         private readonly RepositoryContext _repositoryContext;
-        private readonly Lazy<IUserRepository> _userRepository;
         private readonly Lazy<ICollectionRepository> _collectionRepository;
         private readonly Lazy<ICategoryRepository> _categoryRepository;
         private readonly Lazy<IClotheRepository> _clotheRepository;
@@ -16,7 +15,6 @@ namespace Persistence.Repositories
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
-            _userRepository = new Lazy<IUserRepository>(() => new UserRepository(repositoryContext));
             _collectionRepository = new Lazy<ICollectionRepository>(() => new CollectionRepository(repositoryContext));
             _categoryRepository = new Lazy<ICategoryRepository>(() => new CategoryRepository(repositoryContext));
             _clotheRepository = new Lazy<IClotheRepository>(() => new ClotheRepository(repositoryContext));
@@ -24,9 +22,8 @@ namespace Persistence.Repositories
             _commentRepository = new Lazy<ICommentRepository>(() => new CommentRepository(repositoryContext));
         }
 
-        public IUserRepository UserRepository => _userRepository.Value;
         public ICategoryRepository CategoryRepository => _categoryRepository.Value;
-        public IClotheRepository ClothesRepository => _clotheRepository.Value;
+        public IClotheRepository ClotheRepository => _clotheRepository.Value;
         public ICollectionRepository CollectionRepository => _collectionRepository.Value;
         public ICommentRepository CommentRepository => _commentRepository.Value;
         public ILikeRepository LikeRepository => _likeRepository.Value;

@@ -1,7 +1,10 @@
-﻿using Domain.RepositoryInterfaces;
+﻿using AutoMapper;
+using Domain.Entities.Models;
+using Domain.RepositoryInterfaces;
+using Microsoft.AspNetCore.Identity;
 using Service.Abstractions;
 
-namespace Services.AppServices
+namespace Shared.AppServices
 {
     public class ServiceManager : IServiceManager
     {
@@ -11,17 +14,25 @@ namespace Services.AppServices
         private readonly Lazy<IClotheService> _clotheService;
         private readonly Lazy<ILikeService> _likeService;
         private readonly Lazy<ICommentService> _commentService;
+        private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager; 
+        private readonly ILoggerManager loggerManager;
 
-        public ServiceManager(IRepositoryManager repositoryManager, 
-            ILoggerManager loggerManager)
+        public ServiceManager(IMapper mapper, UserManager<User> userManager,
+          ILoggerManager loggerManager)
         {
-            _userService = new Lazy<IUserService>(() => new UserService(repositoryManager,loggerManager));
+            _userService = new Lazy<IUserService>(() => new UserService(mapper, userManager, loggerManager));
+        }
+        public ServiceManager(IRepositoryManager repositoryManager, 
+            ILoggerManager loggerManager, IMapper mapper)
+        {
             _categoryService = new Lazy<ICategoryService>(() => new CategoryService(repositoryManager, loggerManager));
             _collectionService = new Lazy<ICollectionService>(() => new CollectionService(repositoryManager, loggerManager));
             _clotheService = new Lazy<IClotheService>(() => new ClotheService(repositoryManager, loggerManager));
             _likeService = new Lazy<ILikeService>(() => new LikeService(repositoryManager, loggerManager));
             _commentService = new Lazy<ICommentService>(() => new CommentService(repositoryManager, loggerManager));
         }
+
         public IUserService UserService => _userService.Value;
         public IClotheService ClotheService => _clotheService.Value;
         public ICategoryService CategoryService => _categoryService.Value;

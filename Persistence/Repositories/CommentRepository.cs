@@ -12,7 +12,7 @@ namespace Persistence.Repositories
                 
         }
 
-        public IEnumerable<Comment> GetAllComment(bool trackChanges) =>
+        public IEnumerable<Comment> GetAllComments(bool trackChanges) =>
          GetAll(trackChanges)
         .OrderBy(x => x.CreationDateTime)
         .ToList();

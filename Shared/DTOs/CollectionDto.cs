@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.DTOs
+namespace Shared.DTOs
 {
     /// <summary>
     /// the collection data transfer object
     /// </summary>
     public class CollectionDto
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Id { get; set; } = string.Empty;
+
         /// <summary>
         /// the collection name
         /// </summary>

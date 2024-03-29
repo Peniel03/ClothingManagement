@@ -12,7 +12,7 @@ namespace Persistence.Repositories
                 
         }
 
-        public IEnumerable<Collection> GetAllCollection(bool trackChanges) =>
+        public IEnumerable<Collection> GetAllCollections(bool trackChanges) =>
              GetAll(trackChanges)
             .OrderBy(x => x.Name)
             .ToList();

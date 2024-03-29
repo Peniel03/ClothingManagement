@@ -1,7 +1,8 @@
-﻿using Domain.RepositoryInterfaces;
+﻿using Domain.Entities.Models;
+using Domain.RepositoryInterfaces;
 using Service.Abstractions;
 
-namespace Services.AppServices
+namespace Shared.AppServices
 {
     public class LikeService: ILikeService
     {
@@ -12,6 +13,21 @@ namespace Services.AppServices
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager; 
+        }
+
+        public IEnumerable<Like> GetAllLikes(bool trackChanges)
+        {
+            try
+            {
+                var likes =
+                _repositoryManager.LikeRepository.GetAllLikes(trackChanges);
+                return likes;
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong in the{nameof(GetAllLikes)} service method {ex}");
+                throw;
+            }
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared
+namespace Domain.Exceptions
 {
-    internal class UserToUpdateDto
+    public class BadRequestException
     {
     }
 }

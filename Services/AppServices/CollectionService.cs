@@ -1,7 +1,8 @@
-﻿using Domain.RepositoryInterfaces;
+﻿using Domain.Entities.Models;
+using Domain.RepositoryInterfaces;
 using Service.Abstractions;
 
-namespace Services.AppServices
+namespace Shared.AppServices
 {
     public class CollectionService: ICollectionService
     {
@@ -12,6 +13,21 @@ namespace Services.AppServices
         {
             _repositoryManager = repositoryManager;
             _loggerManager = loggerManager;  
+        }
+
+        public IEnumerable<Collection> GetAllCollections(bool trackChanges)
+        {
+            try
+            {
+                var collections =
+                _repositoryManager.CollectionRepository.GetAllCollections(trackChanges);
+                return collections;
+            }
+            catch (Exception ex)
+            {
+                _loggerManager.LogError($"Something went wrong in the{nameof(GetAllCollections)} service method {ex}"); 
+                throw;
+            }
         }
     }
 }

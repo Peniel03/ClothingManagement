@@ -2,44 +2,42 @@
 using Domain.Entities.Models;
 using Domain.RepositoryInterfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Service.Abstractions;
+using Shared.DTOs;
 
-namespace Services.AppServices
+namespace Shared.AppServices
 {
     public class UserService : IUserService
     {
-        //private readonly IMapper _mapper;
-        //private readonly UserManager<User> _userManager;
-        private readonly IRepositoryManager _repositoryManager;
-        private readonly ILoggerManager _loggerManager;
-        public UserService(//IMapper mapper,
-            //UserManager<User> userManager,
-            IRepositoryManager repositoryManager,
-            ILoggerManager loggerManager)
+         private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager;
+         private readonly ILoggerManager _loggerManager;
+        public UserService(IMapper mapper,
+            UserManager<User> userManager,
+             ILoggerManager loggerManager)
         {
-            //_mapper = mapper;
-          //  _userManager = userManager;
-            _repositoryManager = repositoryManager;
+            _mapper = mapper;
+            _userManager = userManager;
             _loggerManager = loggerManager;
 
         }
 
-        public IEnumerable<User> GetAllUsers(bool trackChanges)
+        public IEnumerable<UserReadDto> GetAllUsers(CancellationToken cancellationToken)
         {
+             
             try
             {
-                var users =
-                _repositoryManager.UserRepository.(trackChanges);
-                return users;
+                var users = _userManager.Users.ToListAsync(cancellationToken); 
+
+                var usersDto = _mapper.Map<List<UserReadDto>>(users);
+                return usersDto;
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong in the 
-            { nameof(GetAllCompanies)}
-                service method { ex}
-                ");
-            throw;
-            }
+                 _loggerManager.LogError($"Something went wrong in the{ nameof(GetAllUsers)} service method {ex}");
+                 throw;
+            }
         }
     }
 }

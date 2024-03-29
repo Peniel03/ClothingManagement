@@ -1,10 +1,11 @@
 ﻿using Domain.Entities.Models;
+using Shared.DTOs;
 
 namespace Service.Abstractions
 {
     public interface IUserService
     {
-        IEnumerable<User> GetAllUsers(bool trackChanges);
-        Task<bool> CreateUserAsync(UserDto user, string password);
+        public IEnumerable<UserReadDto> GetAllUsers(CancellationToken cancellationToken);
+        //Task<bool> CreateUserAsync(UserDto user, string password);
     }
 }  

@@ -5,8 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Extensions;
 using Service.Abstractions;
-using Services.AppServices;
-using Services.Logger;
+using Shared.AppServices;
+using Shared.Logger;
 using System.Configuration;
 
 namespace Clothe.Web.Extensions

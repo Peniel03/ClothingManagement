@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.DTOs
+namespace Shared.DTOs
 {
     public class LikeDto
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Id { get; set; } = string.Empty;
+
         /// <summary>
         /// the like icon's url
         /// </summary>
